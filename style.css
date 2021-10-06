@@ -1,0 +1,79 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body{
+	min-height: 100%;
+	background-color: #636363;
+}
+
+.container{
+	margin-top: 100px;
+	background-color: #636363;
+	min-height: 100%;
+	padding: 10px;
+}
+
+.content {
+	width: 90%;
+	margin: auto;
+	background-color: white;
+	padding: 10px;
+}
+
+/* === Header === */
+header {
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	background-color: #282828;
+	display: flexbox;
+	border-bottom: solid black 3px;
+}
+
+nav{
+	display: flex;
+	float: right;
+}
+
+#Search{
+	display: flexbox;
+	float: right;
+	min-width: fit-content;
+	align-self: center;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	display: inline-block;
+	margin: 20px;
+	border: transparent solid 3px;
+}
+
+nav a {
+	color: white;
+	text-align: center;
+	text-decoration: none;
+
+	display: block;
+	padding: 10px;
+}
+
+/* === Footer === */
+footer {
+	color: white;
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	background-color: #282828;
+	text-align: center;
+	padding: 10px;
+	border-top: solid black 3px;
+}
+
+/* === Product Image Grid === */
+
