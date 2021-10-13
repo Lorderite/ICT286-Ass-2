@@ -5,21 +5,61 @@
 
 html, body{
 	min-height: 100%;
-	background-color: #636363;
+	background-image: linear-gradient(100deg, #672a80, #554971, #63768D, #8AC6D0, #B8F3FF);
+	background-repeat: no-repeat;
 }
 
 .container{
 	margin-top: 100px;
-	background-color: #636363;
+	background-color: none;
 	min-height: 100%;
 	padding: 10px;
 }
 
 .content {
-	width: 90%;
+	width: 70%;
 	margin: auto;
-	background-color: white;
+	background-color: none;
 	padding: 10px;
+}
+
+.productContainer{
+	display: flex;
+	padding: 30px;
+	border: solid black 2px;
+	border-radius: 50px;
+	background-color: #363636;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.753) 0px 18px 36px -18px inset;
+
+	flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
+.productItem{
+	width: 180px;
+	height: 230px;
+	text-align: center;
+	border: solid grey 2px;
+	border-radius: 20px;
+	background-color: white;
+	padding: 5px;
+	margin-right: 30px;
+	margin-bottom: 30px;
+	box-shadow: rgba(169, 46, 240, 0.4) 5px 5px, rgba(169, 46, 240, 0.3) 10px 10px, rgba(169, 46, 240, 0.2) 15px 15px, rgba(169, 46, 240, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+}
+
+.productItem:hover{
+	border-color: black;
+	transform: translate(-3px, -3px);
+}
+
+.productItem img{
+	border: solid grey 2px;
+	border-radius: 30px;
+	overflow: hidden;
+
 }
 
 /* === Header === */
@@ -29,7 +69,9 @@ header {
 	top: 0px;
 	background-color: #282828;
 	display: flexbox;
-	border-bottom: solid black 3px;
+	border-bottom: solid black 1px;
+	box-shadow: rgba(0, 0, 0, 0.404) 0px 20px 10px, rgba(0, 0, 0, 0.404) 0px 10px 10px;
+	z-index: 3;
 }
 
 nav{
@@ -59,6 +101,8 @@ nav a {
 	text-align: center;
 	text-decoration: none;
 
+	font-family: Sora;
+
 	display: block;
 	padding: 10px;
 }
@@ -66,8 +110,8 @@ nav a {
 /* === Footer === */
 footer {
 	color: white;
-	width: 100%;
-	position: fixed;
+	position: relative;
+
 	bottom: 0px;
 	background-color: #282828;
 	text-align: center;
@@ -75,5 +119,19 @@ footer {
 	border-top: solid black 3px;
 }
 
-/* === Product Image Grid === */
+/* === Text === */
+@font-face {
+	font-family: 'Sora';
+	src: url(Sora-VariableFont_wght.ttf);
+}
 
+h1{
+	font-family: Sora;
+	text-align: center;
+	color: white;
+	margin: 3px;
+}
+
+
+
+/* === Other === */
