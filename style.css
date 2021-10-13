@@ -48,6 +48,7 @@ html, body{
 	margin-right: 30px;
 	margin-bottom: 30px;
 	box-shadow: rgba(169, 46, 240, 0.4) 5px 5px, rgba(169, 46, 240, 0.3) 10px 10px, rgba(169, 46, 240, 0.2) 15px 15px, rgba(169, 46, 240, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+	animation: fadeIn forwards 1s;
 }
 
 .productItem:hover{
@@ -77,6 +78,9 @@ header {
 nav{
 	display: flex;
 	float: right;
+	flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #Search{
@@ -84,6 +88,7 @@ nav{
 	float: right;
 	min-width: fit-content;
 	align-self: center;
+	margin: 20px;
 }
 
 ul {
@@ -135,3 +140,15 @@ h1{
 
 
 /* === Other === */
+
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, 40px, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+}
