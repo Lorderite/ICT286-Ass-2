@@ -125,6 +125,15 @@ body {
 #productPriceContainer {
 	margin-top: auto;
 }
+/* == My Account == */
+#myAccountContent {
+	padding: 30px;
+	border: solid black 2px;
+	border-radius: 50px;
+	background-color: #363636;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+		rgba(0, 0, 0, 0.753) 0px 18px 36px -18px inset;
+}
 
 /* == Cart == */
 .cartTableContainer {
@@ -166,6 +175,44 @@ body {
 	text-align: center;
 }
 
+/* == About Us == */
+#aboutUsContent {
+	padding: 30px;
+	border: solid black 2px;
+	border-radius: 50px;
+	background-color: #363636;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+		rgba(0, 0, 0, 0.753) 0px 18px 36px -18px inset;
+
+}
+
+#aboutUsContent p {
+	text-align: left;
+}
+
+#aboutUsContent h2 {
+	text-align: left;
+}
+
+/* == Help == */
+#helpContent {
+	padding: 30px;
+	border: solid black 2px;
+	border-radius: 50px;
+	background-color: #363636;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+		rgba(0, 0, 0, 0.753) 0px 18px 36px -18px inset;
+
+}
+
+#helpContent p {
+	text-align: left;
+}
+
+#helpContent h2 {
+	text-align: left;
+}
+
 /* === Header === */
 header {
 	width: 100%;
@@ -181,15 +228,14 @@ header {
 
 nav {
 	display: flex;
-	float: right;
 	flex-direction: row;
-	flex-wrap: wrap;
 	justify-content: center;
+	float: right;
+	flex-wrap: wrap;
 }
 
 #Search {
 	display: flexbox;
-	float: right;
 	min-width: fit-content;
 	align-self: center;
 	margin: 20px;
@@ -214,6 +260,20 @@ nav a {
 
 	display: block;
 	padding: 10px;
+}
+
+.icons {
+	width: 35px;
+}
+
+#logo {
+	width: 200px;
+	display: flex;
+	float: left;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 20px;
 }
 
 form {
