@@ -5,20 +5,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Lore.jo - Home</title>
 		<link rel="stylesheet" type="text/css" href="style.css" />
-		<script></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="scripts/Index.js"></script>
+		<script src="scripts/searchbar.js"></script>
 	</head>
 
 	<!-- Body -->
 	<body>
 		<!--Navigation Bar-->
 		<header>
-			<a href="index.html"><img id="logo" src="img/icons/logo.png"/></a>
 			<nav>
+				<a href="index.html" id="logoContainer"><img id="logo" src="img/icons/logo.png"/></a>
 				<div id="Search">
-					<input id="txtSearch" type="text" placeholder="Search an ebook.." />
-					<button id="btnSearch">Search</button>
+					<input id="searchBar" type="text" placeholder="Search an ebook..." />
 				</div>
 				<ul>
+					<li id="searchNav"><a href="search.html"><img class="icons" src="img/icons/search.png"/></a></li>
 					<li><a href="index.html"><img class="icons" src="img/icons/home.png"/></a></li>
 					<li><a href="myAccount.html"><img class="icons" src="img/icons/account.png"/></a></li>
 					<li><a href="viewCart.html"><img class="icons" src="img/icons/cart.png"/></a></li>
@@ -32,62 +34,14 @@
 		<div class="container">
 			<!-- Popular -->
 			<div class="content">
-				<h1>Hot right now:</h1>
-				<div class="productContainer">
-					<div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
+				<h1>Top Rated:</h1>
+				<div class="productContainer" id="topRated">
 				</div>
 			</div>
 			<!-- Suggested for you -->
             <div class="content">
-				<h1>Suggested for you:</h1>
-                <div class="productContainer">
-                    <div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
-					<div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
-					<div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
-					<div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
-					<div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
-					<div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
-					<div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
-					<div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
-					<div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
-					<div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
-					<div class=productItem>
-						<img src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" width="150"/>
-						<p>test test</p>
-					</div>
+				<h1>On sale:</h1>
+                <div class="productContainer" id="onSale">
 				</div>
             </div>
 		</div>

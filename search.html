@@ -5,17 +5,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Lore.jo - Search</title>
 	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="scripts/search.js"></script>
+	<script src="scripts/searchbar.js"></script>
 </head>
 	<body>
 		<!--Navigation Bar-->
 		<header>
-			<a href="index.html"><img id="logo" src="img/icons/logo.png"/></a>
 			<nav>
+				<a href="index.html" id="logoContainer"><img id="logo" src="img/icons/logo.png"/></a>
 				<div id="Search">
-					<input id="txtSearch" type="text" placeholder="Search an ebook.." />
-					<button id="btnSearch">Search</button>
+					<input id="searchBar" type="text" placeholder="Search an ebook..." />
 				</div>
 				<ul>
+					<li id="searchNav"><a href="search.html"><img class="icons" src="img/icons/search.png"/></a></li>
 					<li><a href="index.html"><img class="icons" src="img/icons/home.png"/></a></li>
 					<li><a href="myAccount.html"><img class="icons" src="img/icons/account.png"/></a></li>
 					<li><a href="viewCart.html"><img class="icons" src="img/icons/cart.png"/></a></li>
@@ -26,11 +29,20 @@
 		</header>
 
 		<div class="container">
+			<h1>Search</h1>
+			<div class="content">
+				<input type="search" name="mainSearch" id="mainSearch" placeholder="Search an ebook...">
+				<div class="productContainer" id="searchResults">
 
+				</div>
+			</div>
 		</div>
 
+		<!-- Footer -->
 		<footer>
-
+			This website was developed by:<br />
+			Blayde Dietsch (33958764) - Email:<a href="mailto:blaydedietsch@outlook.com"> blaydedietsch@outlook.com</a><br />
+			Kyle Trijo (33954876) - Email:<a href="mailto:kyle.trijo@gmail.com">kyle.trijo@gmail.com</a>
 		</footer>
 	</body>
 </html>

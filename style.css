@@ -73,6 +73,7 @@ body {
 
 	width: 70%;
 	margin: auto;
+	text-align: center;
 }
 
 .productContainer {
@@ -89,9 +90,11 @@ body {
 	justify-content: space-evenly;
 }
 
+/*================== Products =====================*/
+
 .productItem {
 	width: 180px;
-	height: 230px;
+	/*height: 230px;*/
 	text-align: center;
 	border: solid grey 2px;
 	border-radius: 20px;
@@ -105,9 +108,37 @@ body {
 	animation: fadeIn forwards 1s;
 }
 
-.productItem:hover {
+.productItem p{
+	color: black;
+}
+
+.productItem h2{
+	font-size: medium;
+	color: black;
+}
+
+.productItem img{
+	width: 150px;
+}
+
+.viewBtn{
+	color: white;
+    background: linear-gradient(100deg, #8860D0, #5680E9, #84CEEB, #5AB9EA);
+    text-shadow: 1px 0 2px black, 0 1px 2px black;
+	box-shadow: 1px 0 2px black, 0 1px 2px grey;
+    padding: 3px 15px;
+    margin: 5px;
+    border: 2px solid grey;
+    border-radius: 20px;
+	font-size:x-large;
+}
+
+.productItem:hover{
 	border-color: black;
 	transform: translate(-3px, -3px);
+}
+.productItem:hover .viewBtn{
+	border-color: black;
 }
 
 .productItem img {
@@ -125,7 +156,29 @@ body {
 #productPriceContainer {
 	margin-top: auto;
 }
-/* == My Account == */
+
+/*================== Search =====================*/
+#mainSearch{
+	margin: 10px;
+	padding: 10px 20px 10px 20px;
+	font-size: larger;
+	width: 500px;
+	border-radius: 20px;
+}
+
+#searchBar{
+	margin: 10px;
+	padding: 10px 20px 10px 20px;
+	font-size: larger;
+	width: 250px;
+	border-radius: 20px;
+}
+
+#searchNav{
+	display: none;
+}
+
+/*================== My Account =====================*/
 #myAccountContent {
 	padding: 30px;
 	border: solid black 2px;
@@ -229,16 +282,16 @@ header {
 nav {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
-	float: right;
 	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 #Search {
-	display: flexbox;
+	display: flex;
 	min-width: fit-content;
 	align-self: center;
-	margin: 20px;
+	justify-self: center;
+	justify-items: center;
 }
 
 ul {
@@ -266,18 +319,35 @@ nav a {
 	width: 35px;
 }
 
+#logoContainer{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 #logo {
 	width: 200px;
-	display: flex;
-	float: left;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin: 20px;
+	height: 42px;
 }
 
 form {
 	text-align: center;
+}
+
+@media screen and (max-width:1130px){
+	nav{
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	#searchNav{
+		display: inline-block;
+	}
+
+	#searchBar{
+		display: none;
+	}
 }
 
 /* === Footer === */

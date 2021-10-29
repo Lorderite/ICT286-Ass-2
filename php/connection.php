@@ -4,7 +4,7 @@
     $pwd = "X33958764";
     $dbname = "X33958764";
 
-    $dbc = mysqli_connect($host, $user, $pwd, $dbname);
+    $conn = mysqli_connect($host, $user, $pwd, $dbname);
 
     //Check connection
     if (mysqli_connect_errno()) {
@@ -13,11 +13,8 @@
                     . "<br> Error number: "
                     . mysqli_connect_errno();
     }
-
     else
     {
-        echo("I connected.. YAYYYYYYY");
+        echo("Connection is guuuuuud!");
     }
-
 ?>
-

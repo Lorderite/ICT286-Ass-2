@@ -5,20 +5,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Lore.jo - Product</title>
 		<link rel="stylesheet" type="text/css" href="style.css" />
-		<script></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="scripts/searchbar.js"></script>
+		<script src="scripts/product.js"></script>
 	</head>
 
 	<!-- Body -->
 	<body>
 		<!--Navigation Bar-->
 		<header>
-			<a href="index.html"><img id="logo" src="img/icons/logo.png"/></a>
 			<nav>
+				<a href="index.html" id="logoContainer"><img id="logo" src="img/icons/logo.png"/></a>
 				<div id="Search">
-					<input id="txtSearch" type="text" placeholder="Search an ebook.." />
-					<button id="btnSearch">Search</button>
+					<input id="searchBar" type="text" placeholder="Search an ebook..." />
 				</div>
 				<ul>
+					<li id="searchNav"><a href="search.html"><img class="icons" src="img/icons/search.png"/></a></li>
 					<li><a href="index.html"><img class="icons" src="img/icons/home.png"/></a></li>
 					<li><a href="myAccount.html"><img class="icons" src="img/icons/account.png"/></a></li>
 					<li><a href="viewCart.html"><img class="icons" src="img/icons/cart.png"/></a></li>
@@ -32,15 +34,16 @@
 		<div class="container">
             <div class="content" id="productPage">
 				<h1 id="productName">PRODUCT NAME</h1>
-				<img id="productImage" src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg" alt="">
+				<img id="productImage" src="img/placeholder.jpg" alt="">
 				<div id="productDetails">
-					<h1 id="productVol">Volume</h1>
-					<h1 id="productRev">Revision:</h1>
-					<p id="productFran">Franchise:</p>
-					<p id="productYear">Year:</p>
-					<p id="productRating">Rating:</p>
+					<h1 id="productVol">Volume: </h1>
+					<h1 id="productRev">Revision: </h1>
+					<p id="productFran">Franchise: </p>
+					<p id="productYear">Year: </p>
+					<p id="productRating">Rating: </p>
 					<div id="productPriceContainer">
-						<h2 id="productPrice">Price: $0.00</h2>
+						<h2 id="productPrice">Price: </h2>
+						<h2 id="salePrice"></h2>
 					</div>
 				</div>
 
