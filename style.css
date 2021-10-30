@@ -131,6 +131,7 @@ body {
     border: 2px solid grey;
     border-radius: 20px;
 	font-size:x-large;
+	cursor: pointer;
 }
 
 .cartBtn {
@@ -143,6 +144,46 @@ body {
     border: 2px solid grey;
     border-radius: 20px;
 	font-size:x-large;
+	cursor: pointer;
+}
+
+.checkOutBtn {
+	color: white;
+    background: linear-gradient(100deg, #8860D0, #5680E9, #84CEEB, #5AB9EA);
+    text-shadow: 1px 0 2px black, 0 1px 2px black;
+	box-shadow: 1px 0 2px black, 0 1px 2px grey;
+    padding: 3px 15px;
+    margin: 5px;
+    border: 2px solid grey;
+    border-radius: 20px;
+	font-size:x-large;
+	cursor: pointer;
+}
+
+.cartClearBtn {
+	color: white;
+	background: linear-gradient(100deg, #8860D0, #5680E9, #84CEEB, #5AB9EA);
+    text-shadow: 1px 0 2px black, 0 1px 2px black;
+	box-shadow: 1px 0 2px black, 0 1px 2px grey;
+    padding: 3px 15px;
+    margin: 5px;
+    border: 2px solid grey;
+    border-radius: 20px;
+	font-size: medium;
+	cursor: pointer;
+}
+
+.cartRemoveBtn {
+	color: white;
+	background: linear-gradient(100deg, #8860D0, #5680E9, #84CEEB, #5AB9EA);
+    text-shadow: 1px 0 2px black, 0 1px 2px black;
+	box-shadow: 1px 0 2px black, 0 1px 2px grey;
+    padding: 3px 15px;
+    margin: 5px;
+    border: 2px solid grey;
+    border-radius: 20px;
+	font-size: medium;
+	cursor: pointer;
 }
 
 .productItem:hover{
@@ -201,33 +242,23 @@ body {
 }
 
 /* == Cart == */
-.cartTableContainer {
-	display: flex;
-	padding: 30px;
+
+#TotalPriceContent {
+	padding: 10px;
+
+}
+
+#cartContent {
+	padding: 10px;
 	border: solid black 2px;
 	border-radius: 50px;
 	background-color: #363636;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
 		rgba(0, 0, 0, 0.753) 0px 18px 36px -18px inset;
-
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-}
-
-#cartTitle {
-	width: 100%;
-}
-
-#cartContent {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-between;
 }
 
 #cartTable {
-	width: 50%;
+	width: 100%;
 }
 
 #cartTable th, td {
@@ -238,6 +269,10 @@ body {
 	padding-right: 50px;
 	padding-left: 50px;
 	text-align: center;
+}
+
+#cartImage {
+	width: 50px;
 }
 
 /* == About Us == */
