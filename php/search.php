@@ -10,7 +10,7 @@
 	$target = $_GET['search'];
 	$count = $_GET['count'];
 
-	$sql = "SELECT * FROM `ebook` WHERE title LIKE \"$target\" OR franchise like \"$target\" LIMIT $count;";
+	$sql = "SELECT * FROM `ebook` WHERE title LIKE \"%$target%\" OR franchise like \"%$target%\" LIMIT $count;";
 
 	//Run Query
 	$result = mysqli_query($conn, $sql);

@@ -61,7 +61,10 @@ function LoadCartProduct(id, quantity) {
             }
 
 			// remove button
-			html += "<th><button type=\"button\" id=\"" + product.id + "\" class=\"cartRemoveBtn\" onclick=\"removeProduct(this.id);\">Remove</button></th>";
+			html += "<th>"
+				+ "<button type=\"button\" id=\"" + product.id + "\" class=\"cartRemoveBtn\" onclick=\"removeProduct(this.id);\">Remove</button><br>"
+				+ "<button onclick=\"location.href='product.html?productId="+product.id+"'\">View</button>"
+				+ "</th>";
 
 			// append to table
 			$("#cartTable").append(html);

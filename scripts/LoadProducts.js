@@ -1,4 +1,4 @@
-export function LoadProducts(URL, target){
+export function LoadProducts(URL, target, suppress = false){
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
@@ -9,11 +9,13 @@ export function LoadProducts(URL, target){
 			try {
 				var results = JSON.parse(response);
 			} catch (error) {
-				$(target).html("<h1>No ebooks found...</h1>");
+				if(!suppress)
+					$(target).html("<h1>No ebooks found...</h1>");
 				return;
 			}
 			if(results.length == 0){
-				$(target).html("<h1>No ebooks found...</h1>");
+				if(!suppress)
+					$(target).html("<h1>No ebooks found...</h1>");
 				return;
 			}
 
@@ -24,7 +26,8 @@ export function LoadProducts(URL, target){
 					+ "<h2>"+results[i].title+"</h2>"
 					+ "<p>Volume: "+results[i].volume+"</p>"
 					+ "<p>Revision: "+results[i].revision+"</p>"
-					+ "<button class='viewBtn' onclick=\"location.href='product.html?productId="+results[i].id+"'\">View</button>"
+					+ "<button onclick=\"location.href='product.html?productId="+results[i].id+"'\">View</button>"
+					+ "<button onclick=\"addToCart("+results[i].id+")\">Add to Cart</button>"
 					+ "</div>";
 				$(target).append(element);
 			}
