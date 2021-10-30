@@ -76,7 +76,7 @@ VALUES
 ('Destiny 2 Lore',2,1,'Destiny',4.8,2019,15.99,6.9),
 ('Half-life Lore',1,0,'Half-life',3.5,2014,9.99,null),
 ('Half-life Lore',1,1,'Half-life',2.2,2014,12.99,null),
-('Half-life Lore',2,1,'Half-life',3.9,2015,12.99,4.9),
+('Half-life Lore',2,0,'Half-life',3.9,2015,12.99,4.9),
 ('Half-life 2 Lore',1,0,'Half-life',3.5,2014,9.99,null),
 ('Half-life 2 Lore',1,1,'Half-life',2.2,2014,11.99,null),
 ('Half-life 2 Lore',1,2,'Half-life',4.3,2015,12.99,null),
