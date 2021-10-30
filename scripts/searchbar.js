@@ -6,5 +6,4 @@ $(document).ready(function(){
 			window.location.href = "../search.html?search="+$("#searchBar").val();
 		}
 	});
-	GetResults();
 });
