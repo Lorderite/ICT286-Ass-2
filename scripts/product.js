@@ -1,5 +1,13 @@
 $(document).ready(function(){
 	LoadProductDetails();
+
+	// Add to cart alert
+	$( "#btnAddToCart" ).click(function() {
+		$("#btnAddToCart").text("Added!")
+		setTimeout(function() { 
+			$("#btnAddToCart").text("Add to cart");; 
+		}, 2500);
+		});
 });
 
 function LoadProductDetails() {
@@ -47,31 +55,72 @@ function LoadProductDetails() {
 }
 
 function addToCart() {
-	//Get username
-	var username = "test"; //temporary. implement this later so it grabs the logged in username
-	
-	//Get product ID
+	// get username
+	var username = "test"; //temporary. implement this later so it grabs the logged in username\
+	var cart = [];
+	let product = new Object();
+	var cookie; 
+	var json_str = "";
+
+	//Get product ID and quantity
 	const params = new URLSearchParams(document.location.search);
 	const id = params.get("productId");
+	const quantity = document.getElementById("quantity").value;
 
-	// Check if cookie exists for the current user
-	var cookie = getCookie(username);
-	if (cookie === "") { // create a new cookie
-		setCookie(username, id, 1);
+	// user has no cookie. create a new cookie
+	cookie = getCookie(username);
+	if (cookie === "") { 	 
+
+		// make a new product object to the cart
+		product.id = id;
+		product.quantity = Number(quantity);
+		cart.push(product);
+
+		// create cookie
+		json_str = JSON.stringify(cart);
+		createCookie(username, json_str, 1);
 	}
 	else { 	// append cookie
-		const tokens = cookie.split('=');	// get cookie value
-		var newValue = tokens[1] + "," + id; // add the new id to the value
-		setCookie(username, newValue, 1);
+
+		json_str = cookie;
+		cart = JSON.parse(json_str);
+
+		// check if id already exists
+		for (var i = 0; i < cart.length; i++) {
+
+			if (cart[i].id == id) {
+				// calculate the new quantity
+				cart[i].quantity = Number(cart[i].quantity) + Number(quantity); 
+
+				// create cookie
+				json_str = JSON.stringify(cart);
+				createCookie(username, json_str, 1);
+
+				//debug
+				//var cookie = getCookie(username);
+				//alert(cookie);
+				return;
+			}
+		}
+
+		// id does not exist. make a new product object to the cart
+		product.id = id;
+		product.quantity = Number(quantity);
+		cart.push(product);
+		
+		// create cookie
+		json_str = JSON.stringify(cart);
+		createCookie(username, json_str, 1);
+
 	}
 
-	//debug - alerts the cookie assinged to the user
-	var cookie = getCookie(username);
-	alert(cookie);
+	//debug
+	//var cookie = getCookie(username);
+	//alert(cookie);
 
 }
 
-function setCookie(key, value, expireDays) {
+function createCookie(key, value, expireDays) {
 	// set expirate date
 	const d = new Date();
 	d.setTime(d.getTime() + (expireDays*24*60*60*1000));
@@ -100,7 +149,7 @@ function getCookie(key) {
 
 		// grab specified cookie name
 		if (cookie.indexOf(prefix) == 0) {
-			return cookie.substring(name.length, cookie.length);
+			return cookie.substring(prefix.length, cookie.length);
 		}
 	}
 

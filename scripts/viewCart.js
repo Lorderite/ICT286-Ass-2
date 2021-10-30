@@ -1,27 +1,29 @@
-//to do - handle duplicates
-
-var total = 0;
+var totalCost = 0;
+var username = "test"; //temporary. implement this later so it grabs the logged in username
 
 $(document).ready(function(){
 	LoadCart();
 });
 
-function LoadCart() {
-	var username = "test"; //temporary. implement this later so it grabs the logged in username
+function LoadCart() {	
+	var cart = [];
+	var cookie; 
+	var json_str;
+
+	//grab cart details from cookie
+	cookie = getCookie(username);
+	json_str = cookie;
+	cart = JSON.parse(json_str);
 
 	// Load Products
-	var cookie = getCookie(username);
-	const tokens = cookie.split('='); // get cookie value
-	const IDArray = tokens[1].split(','); //split the IDs
-	for (let i = 0 ; i < IDArray.length; i++) {
-		LoadCartProduct(IDArray[i]);
+	for (let i = 0 ; i < cart.length; i++) {
+		LoadCartProduct(cart[i].id, cart[i].quantity);
 	}
 }
 
-function LoadCartProduct(ID) {
+function LoadCartProduct(id, quantity) {
 
 	var html = "";
-	var quantity = 0;
 
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
@@ -34,8 +36,8 @@ function LoadCartProduct(ID) {
 
             // fill in details (only need title, image, volume, revision, price)
 			html += "<tr>";
-			html += "<th>" + "<img src=\"" + product.image + "\" id=\"cartImage\">" + "</th>";
-			html += "<th>" + product.title + " vol." + product.volume + " rev." + product.revision +  "</th>";
+			html += "<th>"  + "<a href=\"product.html?productId=" + product.id + "\">" + "<img src=\"" + product.image + "\" id=\"cartImage\">" + "</a></th>";
+			html += "<th>" + "<a href=\"product.html?productId=" + product.id + "\">" + product.title + " | vol." + product.volume + " rev." + product.revision +  "</a></th>";
 			html += "<th>" + quantity + "</th>";
 			//Price
 			var formatter = new Intl.NumberFormat('en-AU',{
@@ -43,13 +45,19 @@ function LoadCartProduct(ID) {
 				currency: 'AUD'
 			});
 
+			// sale
             if(product.salePrice != null){
 				html += "<th>" + formatter.format(product.salePrice) + "</th>";
-				total += parseFloat(product.salePrice);
+				var totalPrice = product.salePrice * Number(quantity);
+				html += "<th>" + formatter.format(totalPrice) + "</th>";
+				totalCost += parseFloat(totalPrice);
 			}
+			// not sale
 			else{
 				html += "<th>" + formatter.format(product.price) + "</th>";
-				total += parseFloat(product.price);
+				var totalPrice = product.price * Number(quantity);
+				html += "<th>" + formatter.format(totalPrice) + "</th>";
+				totalCost += parseFloat(totalPrice);
             }
 
 			// remove button
@@ -58,19 +66,18 @@ function LoadCartProduct(ID) {
 			// append to table
 			$("#cartTable").append(html);
 
-			$("#totalPrice").text(formatter.format(total));
+			$("#totalCost").text(formatter.format(totalCost));
         }
     }
 
 	//Build URL
-	var url = "php/ProductDetailsByID.php?productId="+ ID;
+	var url = "php/ProductDetailsByID.php?productId="+ id;
 	xhr.open("GET", url, true);
 	xhr.send();
 
 }
 
-
-function setCookie(key, value, expireDays) {
+function createCookie(key, value, expireDays) {
 	// set expirate date
 	const d = new Date();
 	d.setTime(d.getTime() + (expireDays*24*60*60*1000));
@@ -99,7 +106,7 @@ function getCookie(key) {
 
 		// grab specified cookie name
 		if (cookie.indexOf(prefix) == 0) {
-			return cookie.substring(name.length, cookie.length);
+			return cookie.substring(prefix.length, cookie.length);
 		}
 	}
 
@@ -109,23 +116,28 @@ function getCookie(key) {
 }
 
 function removeProduct(id) {
-	var username = "test"; //temporary. implement this later so it grabs the logged in username
 
 	if (confirm("Are you sure you remove this item from your cart?")) {
-		var cookie = getCookie(username);
-		const tokens = cookie.split('='); // get cookie value
-		const IDArray = tokens[1].split(','); //split the IDs
+		var cart = [];
+		var cookie; 
+		var json_str;
 	
-		for (let i = 0 ; i < IDArray.length; i++) {
+		//grab cart details from cookie
+		cookie = getCookie(username);
+		json_str = cookie;
+		cart = JSON.parse(json_str);
+	
+		for (let i = 0 ; i < cart.length; i++) {
 			
 			// remove the id
-			if (IDArray[i] == id) {
-				IDArray.splice(i, 1);
+			if (cart[i].id == id) {
+				cart.splice(i, 1);
 			}
 		}
 	
 		// rebuild cookie
-		setCookie(username, IDArray, 1);
+		json_str = JSON.stringify(cart);
+		createCookie(username, json_str, 1);
 	
 		// reload page
 		location.reload();
