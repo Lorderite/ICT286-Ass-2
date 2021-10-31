@@ -22,21 +22,21 @@ $(document).ready(function ()
 		console.log("Showing user page");
 		$("#yes_login").show()
 		document.getElementById("yl_defaultTab").click();
+		$(".username").html(username);
 	} 
 	// staffs
 	else if (username !== "" && type == 2) {
 		console.log("Showing staff page");
 		$("#yes_login_staff").show();
 		document.getElementById("yl_defaultTab_staff").click();
+		$(".username").html(username);
 	}
 	// guests
 	else {
 		console.log("Showing login page");
 		$("#no_login").show();
 		document.getElementById("nl_defaultTab").click();
-		
 	}
-
 });
 
 
@@ -105,10 +105,8 @@ function Login()
 
 }
 
-function Signup()
+function SignUp()
 {
-	var accountIn;
-
 	//Retreive from text boxes
 	const username = $("#signup_username").val();
 	const password = $("#signup_password").val();
@@ -125,32 +123,71 @@ function Signup()
 
 			//If response valid parse it
 			console.log("Response: " + response);
-			if (response !== "")
+			if (response === "")
 			{
 				document.getElementById("signUpAlert").innerText = "account already exists!";
 				return false;
 			}
-			else
-			{ // proceed to create account
+			if (response === false) //failed to create
+			{ 
+				document.getElementById("signUpAlert").innerText = "Failed to create!";
+				return false;
+			} else{
+				alert("Account created!");
 				return true;
 			}
 		}
 	}
 
-	var url = "server/SignUp.php?username=" + username;
+	var url = "server/SignUp.php?username=" + username+"&password="+password+"&email"+email;
 	console.log("Requesting login: " + url);
 	xhr.open("GET", url);
 	xhr.send();
 
 	// if not add a new account to the database
-
-
 }
 
 function LogOut(){
 	createCookie("login","",0);
 	location.reload();
 	console.log("Logged out");
+}
+
+function UpdateUserDetails(){
+	var emailIn, passwordIn
+	const account = JSON.parse(getCookie("login"));
+	
+	if(account.type == 1){//If regular user
+		emailIn = $("#edit_email").val();
+		passwordIn = $("#edit_password").val();
+	} else{//Staff
+		emailIn = $("#edit_email_staff").val();
+		passwordIn = $("#edit_password_staff").val();
+	}
+
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function ()
+	{
+		if (this.readyState == 4 && this.status == 200)
+		{
+			//Get response
+			var response = this.responseText;
+			if(response){
+				alert("Password and email changed!");
+			}
+			else{
+				alert("Failed to change");
+			}
+		}
+	}
+
+	var url = "server/SetLoginDetails.php?username="+account.username
+		+"&password="+passwordIn
+		+"&email="+emailIn;
+	console.log("Calling: "+url);
+	xhr.open("GET", url, true);
+	xhr.send();
+	
 }
 
 function openTab(event, process) {
@@ -217,7 +254,6 @@ function getCookie(key)
 
 	//cookie not found
 	return "";
-
 }
 
 function getUsername() {

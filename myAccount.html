@@ -57,13 +57,13 @@
 						<form onsubmit="return false">
 							<h2>New customer?<br>Sign up here!</h2><br>
 							<label for="signup_username">Username</label><br>
-							<input type="text" id="signup_username" name="signup_username"><br><br>
+							<input type="text" id="signup_username" name="signup_username" required><br><br>
 							<label for="signup_password">Password</label><br>
-							<input type="password" id="signup_password" name="signup_password"><br><br>
+							<input type="password" id="signup_password" name="signup_password" required><br><br>
 							<label for="signup_email">Email (Optional)</label><br>
 							<input type="password" id="signup_email" name="signup_email"><br>
 							<p id="signUpAlert" style="color: red;"></p><br>
-							<button type="submit" id="btnSignUp">Sign Up</button>
+							<button type="submit" id="btnSignUp" onclick="SignUp()">Sign Up</button>
 						</form>
 					</div>
 				</article>
@@ -77,11 +77,12 @@
 					<div id="edit" class="tabcontent loggedIn">
 						<form onsubmit="return false">
 							<h2>Edit Your Personal Information</h2><br>
+							<h2 class="username"></h2>
 							<label for="edit_email">Email</label><br>
 							<input type="text" id="edit_email" name="edit_email"><br><br>
 							<label for="edit_password">Password</label><br>
-							<input type="edit_password" id="edit_password" name="edit_password"><br><br>
-							<button type="button" id="btnEdit" onclick="">Submit</button><br><br>
+							<input type="edit_password" id="edit_password" name="edit_password" required><br><br>
+							<button type="submit" id="btnEdit" onclick="UpdateUserDetails()">Submit</button><br><br>
 						</form>
 					</div>
 					<div id="history" class="tabcontent loggedIn">
@@ -109,21 +110,22 @@
 					<div id="edit_staff" class="tabcontent loggedIn">
 						<form onsubmit="return false">
 							<h2>Edit Your Personal Information</h2><br>
+							<h2 class="username"></h2>
 							<label for="edit_email">Email</label><br>
 							<input type="text" id="edit_email_staff" name="edit_email_staff"><br><br>
 							<label for="edit_password_staff">Password</label><br>
-							<input type="edit_password" id="edit_password_staff" name="edit_password_staff"><br><br>
-							<button type="button" id="btnEditStaff" onclick="">Submit</button><br><br>
+							<input type="edit_password" id="edit_password_staff" name="edit_password_staff" required><br><br>
+							<button type="submit" id="btnEditStaff" onclick="UpdateUserDetails()">Submit</button><br><br>
 						</form><br>
 						<form onsubmit="return false">
 							<h2>Create new staff account</h2><br>
 							<label for="signup_username_staff">Username</label><br>
-							<input type="text" id="signup_username_staff" name="signup_username_staff"><br><br>
+							<input type="text" id="signup_username_staff" name="signup_username_staff" required><br><br>
 							<label for="signup_password_staff">Password</label><br>
-							<input type="password" id="signup_password_staff" name="signup_password_staff"><br><br>
+							<input type="password" id="signup_password_staff" name="signup_password_staff" required><br><br>
 							<label for="signup_email_staff">Email (Optional)</label><br>
-							<input type="password" id="signup_email_staff" name="signup_email_staff"><br><br>	
-							<button type="submit" id="btnSignUp_staff">Create</button>
+							<input type="password" id="signup_email_staff" name="signup_email_staff" required><br><br>	
+							<button type="submit" id="btnSignUp_staff" onclick="CreateStaff()">Create</button>
 						</form>
 					</div>
 					<div id="products_staff" class="tabcontent loggedIn">

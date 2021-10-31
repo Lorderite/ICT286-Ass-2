@@ -10,7 +10,9 @@ $(document).ready(function(){
 	//Auto load on scroll
 	var offset = 0;
 	$(window).scroll(function(){
-		if($(window).scrollTop() == $(document).height() - $(window).height()){
+		console.log("Scroll: "+$(window).scrollTop());
+		console.log($(document).height() - $(window).height());
+		if($(window).scrollTop() >= $(document).height() - $(window).height()-10){
 			LoadAllProductsBounds(offset, AutoLoad);
 			offset+=AutoLoad;
 		}
