@@ -19,22 +19,23 @@ $(document).ready(function(){
 	});
 });
 
+
 function LoadIndexProductsRated(){
 
-	//Build URL
-	var url = "server/GetRatedProducts.php?count="+LoadCount;
-	LoadProducts(url, "#topRated");
+    //Build URL
+    var url = "server/GetRatedProducts.php?count="+LoadCount;
+    LoadProducts(url, "#topRated");
 }
 
 function LoadIndexProductsSale(){
-	//Build URL
-	var url = "server/GetSaleProducts.php?count="+LoadCount;
-	LoadProducts(url, "#onSale");
+    //Build URL
+    var url = "server/GetSaleProducts.php?count="+LoadCount;
+    LoadProducts(url, "#onSale");
 }
 
 function LoadAllProductsBounds(offset, count){
-	//Build URL
-	var url = "server/GetAllProductsRange.php?offset="+offset+"&count="+count;
-	console.log("Calling: "+url);
-	LoadProducts(url, "#allProducts", true);
+    //Build URL
+    var url = "server/GetAllProductsRange.php?offset="+offset+"&count="+count;
+    console.log("Calling: "+url);
+    LoadProducts(url, "#allProducts", true);
 }

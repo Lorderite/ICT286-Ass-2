@@ -350,11 +350,11 @@ th, td {
 }
 
 #helpContent p {
-	text-align: left;
+	text-align: center;
 }
 
 #helpContent h2 {
-	text-align: left;
+	text-align: center;
 }
 
 /* === Header === */
