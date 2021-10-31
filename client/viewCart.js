@@ -167,16 +167,18 @@ function checkout() {
 	//grab cart details from cookie
 	cookieCart = getCookie(username);
 
-	if (type > 0) {
+	if (!cookieCart) {
+		alert("Please add items to your cart before ordering.")
+	}
+
+	if (type > 0 && cookieCart) {
+
 		if (confirm("Proceed to order?")) {
 			createCookie(username, "", 0);
 			alert("You've succesfully ordered!");
 			//reload page
 			location.reload();
 		}
-	}
-	else if (!cookieCart || !type) {
-		alert("Please add items to your cart before ordering.")
 	}
 	else {
 		alert("Please make an account to continue to order.");

@@ -1,3 +1,4 @@
+
 function getUsername() {
     var json_str = getCookie("login");
 	if (json_str) {
