@@ -26,7 +26,6 @@ body {
 	padding-top: 20px;
 	padding-bottom: 6px;
 	height: 100%;
-	/*flex: 1 0 auto;*/
 	display: flex;
 
 	margin-top: auto;
@@ -213,6 +212,23 @@ button:hover{
 		rgba(0, 0, 0, 0.753) 0px 18px 36px -18px inset;
 }
 
+#productTable_staff {
+	width: 100%;
+	margin-bottom: 30px;
+	border-collapse: collapse;
+}
+
+.tab{
+	width: 300px;
+	margin: auto;
+	border-collapse: collapse;
+	display: flex;
+}
+
+.tab.loggedIn{
+	width: 70%;
+}
+
 .tabcontent {
 	width: 300px;
 	display: none;
@@ -223,11 +239,8 @@ button:hover{
 	background-color: #282828;
 }
 
-.tab{
-	width: 300px;
-	margin: auto;
-	border-collapse: collapse;
-	display: flex;
+.tabcontent.loggedIn{
+	width: 70%;
 }
 
 .tablinks{
@@ -240,6 +253,12 @@ button:hover{
 	border-radius: 10px 0px 0px 0px;
 	border-bottom: 0px;
 }
+
+.tablinks.middle{
+	border-radius: 0px 0px 0px 0px;
+	border-bottom: 0px;
+}
+
 
 .tablinks.right{
 	border-radius: 0px 10px 0px 0px;
@@ -296,7 +315,7 @@ th, td {
 	margin: 20px;
 }
 
-.cartRemoveBtn {
+.cartRemoveBtn, .cartViewBtn {
 	font-size: medium;
 }
 
@@ -368,12 +387,14 @@ nav {
 
 ul {
 	list-style: none;
+	display: flex;
 }
 
 li {
 	display: inline-block;
-	margin: 20px;
+	margin: 15px;
 	border: transparent solid 3px;
+	text-align: center;
 }
 
 nav a {
@@ -406,21 +427,7 @@ form {
 	text-align: center;
 }
 
-@media screen and (max-width:1130px){
-	nav{
-		flex-direction: column;
-		justify-content: space-around;
-		align-items: center;
-	}
 
-	#searchNav{
-		display: inline-block;
-	}
-
-	#searchBar{
-		display: none;
-	}
-}
 
 /* === Footer === */
 footer {
@@ -434,7 +441,6 @@ footer {
 	margin-top: auto;
 
 	font-family: sora;
-	te
 }
 
 /* === Text === */
@@ -493,5 +499,47 @@ a:hover{
 	100% {
 		opacity: 1;
 		transform: translate3d(0, 0, 0);
+	}
+}
+
+@media screen and (max-width:1130px){
+	/*===== Header =====*/
+	nav{
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	#searchNav{
+		display: inline-block;
+	}
+
+	#searchBar{
+		display: none;
+	}
+
+	.icons{
+		width: 50px;
+	}
+
+	li{
+		margin: 10px;
+	}
+
+	/*===== Content =====*/
+	.content{
+		width: 90%;
+	}
+
+	button{
+		font-size: x-large;
+	}
+
+	/*===== Cart ======*/
+	.cartClearBtn, .checkOutBtn{
+		font-size: xx-large;
+	} 
+	.cartRemoveBtn, .cartBtn, .cartViewBtn{
+		font-size: x-large;
 	}
 }

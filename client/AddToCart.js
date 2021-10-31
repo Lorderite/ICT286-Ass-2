@@ -1,74 +1,60 @@
-$(document).ready(function(){
-	LoadProductDetails();
-
-	// Add to cart alert
-	$( "#btnAddToCart" ).click(function() {
-		$("#btnAddToCart").text("Added!")
-		setTimeout(function() { 
-			$("#btnAddToCart").text("Add to cart");; 
-		}, 2500);
-		});
-});
-
-function LoadProductDetails() {
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function(){
-		if(this.readyState == 4 && this.status == 200){
-			
-			//get json back
-			var response = this.responseText;
-			//Parse
-			var product = JSON.parse(response);
-
-			//Fill in details
-			$("#productName").html(product.title);
-			if(product.image != null)
-				$("#productImage").attr("src", product.image);
-			$("#productVol").append(product.volume);
-			$("#productRev").append(product.revision);
-			$("#productFran").append(product.franchise);
-			$("#productYear").append(product.year);
-			$("#productRating").append(product.rating+"/5");
-			//Price
-			var formatter = new Intl.NumberFormat('en-AU',{
-				style: 'currency',
-				currency: 'AUD'
-			});
-			if(product.salePrice != null){
-				$("#productPrice").append("<del>"+formatter.format(product.price)+"</del>");
-				$("#salePrice").html(formatter.format(product.salePrice));
-			}
-			else{
-				$("#productPrice").append(formatter.format(product.price));
-			}
-		}
+function getUsername() {
+    var json_str = getCookie("login");
+	if (json_str) {
+		var account = JSON.parse(json_str);
+		return account.username;
 	}
 
-	//Get ID
-	const params = new URLSearchParams(document.location.search);
-	const id = params.get("productId");
-
-	//Build URL
-	var url = "php/ProductDetailsByID.php?productId="+id;
-	xhr.open("GET", url, true);
-	xhr.send();
-}
-
-function getUsername() {
-	var json_str = getCookie("login");
-	var account = JSON.parse(json_str);
-	return account.username;
+	return "";
 }
 
 function getAccountType() {
-	var json_str = getCookie("login");
-	var account = JSON.parse(json_str);
-	return account.type;
+    var json_str = getCookie("login");
+	if (json_str) {
+		var account = JSON.parse(json_str);
+		return account.type;
+	}
+
+	return "";
 }
 
-function addToCart() {
+function addToCart(id) {
 	// get username from login cookie
 	var username = getUsername();
+
+	// check if theres an account is logged in. proceed to add to cart
+	if (username) {
+		console.log("Adding to existing login's cart")
+		fillCart(id,username);
+		CheckCartCount();
+		return;
+	}
+
+	// else make a guest cookie login. then use guest cookie to add to cart
+	console.log("Creating guest and adding to cart");
+	var account = new Object();
+	account.username = "guest";
+	account.type = 0;
+	var json_str = JSON.stringify(account);
+	createCookie("login", json_str, 1);;
+	fillCart(id,"guest");
+	CheckCartCount();
+}
+
+function CheckCartCount(){
+	const username = getUsername();
+	var cart, total = 0;
+	if(username !== ""){
+		cart = JSON.parse(getCookie(username));
+		for(let i = 0; i < cart.length; i++){
+			total += cart[i].quantity;
+		}
+		$("#cartCount").html(total);
+	}
+	
+}
+
+function fillCart(id, username) {
 	var cart = [];
 	let product = new Object();
 	var cookie; 
@@ -76,9 +62,8 @@ function addToCart() {
 
 	//Get product ID and quantity
 	const params = new URLSearchParams(document.location.search);
-	const id = params.get("productId");
-	const quantity = document.getElementById("quantity").value;
-
+	const quantity = 1;
+	
 	// user has no cookie. create a new cookie
 	cookie = getCookie(username);
 	if (cookie === "") { 	 
@@ -129,7 +114,6 @@ function addToCart() {
 	//debug
 	//var cookie = getCookie(username);
 	//alert(cookie);
-
 }
 
 function createCookie(key, value, expireDays) {
@@ -143,7 +127,7 @@ function createCookie(key, value, expireDays) {
 }
 
 function getCookie(key) {
-	// username=
+	// key=
 	const prefix = key + "=";
 	// retrieve cookies
 	const cookiesDecoded = decodeURIComponent(document.cookie);
@@ -167,5 +151,4 @@ function getCookie(key) {
 
 	//cookie not found
 	return "";
-
 }

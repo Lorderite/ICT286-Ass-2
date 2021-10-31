@@ -1,5 +1,6 @@
 var totalCost = 0;
-var username = "test"; //temporary. implement this later so it grabs the logged in username
+var username = getUsername();
+var type = getAccountType();
 
 $(document).ready(function(){
 	LoadCart();
@@ -60,10 +61,10 @@ function LoadCartProduct(id, quantity) {
 				totalCost += parseFloat(totalPrice);
             }
 
-			// remove button
+			// remove + View buttons
 			html += "<th>"
 				+ "<button type=\"button\" id=\"" + product.id + "\" class=\"cartRemoveBtn\" onclick=\"removeProduct(this.id);\">Remove</button><br>"
-				+ "<button onclick=\"location.href='product.html?productId="+product.id+"'\">View</button>"
+				+ "<button class=\"cartViewBtn\" onclick=\"location.href='product.html?productId="+product.id+"'\">View</button>"
 				+ "</th>";
 
 			// append to table
@@ -74,7 +75,7 @@ function LoadCartProduct(id, quantity) {
     }
 
 	//Build URL
-	var url = "php/ProductDetailsByID.php?productId="+ id;
+	var url = "server/ProductDetailsByID.php?productId="+ id;
 	xhr.open("GET", url, true);
 	xhr.send();
 
@@ -120,7 +121,7 @@ function getCookie(key) {
 
 function removeProduct(id) {
 
-	if (confirm("Are you sure you remove this item from your cart?")) {
+	if (confirm("Are you sure you want to remove this item from your cart?")) {
 		var cart = [];
 		var cookie; 
 		var json_str;
@@ -150,12 +151,54 @@ function removeProduct(id) {
 }
 
 function clearCart() {
-	var username = "test"; //temporary. implement this later so it grabs the logged in username
 
 	if (confirm("Are you sure you want to clear your cart?")) {
-		document.cookie = username + "=;path=/;Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+		createCookie(username, "", 0);
 		//reload page
 		location.reload();
 	}
 
+}
+
+function checkout() {	
+	var cookie; 
+	var json_str;
+
+	//grab cart details from cookie
+	cookieCart = getCookie(username);
+
+	if (type > 0) {
+		if (confirm("Proceed to order?")) {
+			createCookie(username, "", 0);
+			alert("You've succesfully ordered!");
+			//reload page
+			location.reload();
+		}
+	}
+	else if (!cookieCart || !type) {
+		alert("Please add items to your cart before ordering.")
+	}
+	else {
+		alert("Please make an account to continue to order.");
+	}
+}
+
+function getUsername() {
+    var json_str = getCookie("login");
+	if (json_str) {
+		var account = JSON.parse(json_str);
+		return account.username;
+	}
+
+	return "";
+}
+
+function getAccountType() {
+    var json_str = getCookie("login");
+	if (json_str) {
+		var account = JSON.parse(json_str);
+		return account.type;
+	}
+
+	return "";
 }
