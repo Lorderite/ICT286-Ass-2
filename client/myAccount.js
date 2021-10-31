@@ -81,6 +81,7 @@ function Login()
 						//Murder that stupid guest cart. rip
 						createCookie("guest", "", 0);
 					}
+					location.reload();
 					return true;
 
 				} else

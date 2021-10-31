@@ -43,14 +43,14 @@
 						<button class="tablinks right" onclick="openTab(event, 'signup');">Sign up</button>
 					</div>
 					<div id="login" class="tabcontent">
-						<form onsubmit="return Login()">
+						<form onsubmit="return false;">
 							<h2>Login</h2><br>
 							<label for="username">Username</label><br>
 							<input type="text" id="username" name="username"><br><br>
 							<label for="password">Password</label><br>
 							<input type="password" id="password" name="password"><br>
 							<p id="loginAlert" style="color: red;"></p><br>
-							<button type="submit" id="btnLogin">Log In</button><br><br>
+							<button type="submit" id="btnLogin" onclick="Login()">Log In</button><br><br>
 						</form>
 					</div>
 					<div id="signup" class="tabcontent">
