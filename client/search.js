@@ -22,12 +22,12 @@ function GetResults(){
 	var url;
 	if(target){
 		console.log("Parameters found");
-		url = "php/search.php?search="+target+"&count="+LoadCount;
+		url = "server/search.php?search="+target+"&count="+LoadCount;
 		$("#mainSearch").val(target);
 	}//Else get top rated
 	else{
 		console.log("No parameters")
-		url = "php/GetRatedProducts.php?count="+LoadCount;
+		url = "server/GetRatedProducts.php?count="+LoadCount;
 	}
 
 	LoadProducts(url, "#searchResults")

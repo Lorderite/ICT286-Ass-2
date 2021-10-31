@@ -9,8 +9,8 @@
 		<link rel="icon" type="image/png" href="favicon//favicon32x32.png" sizes="32x32">
 		<link rel="icon" type="image/png" href="favicon//favicon96x96.png" sizes="96x96">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="scripts/searchbar.js"></script>
-		<script src="scripts/viewCart.js"></script>
+		<script src="client/header.js"></script>
+		<script src="client/viewCart.js"></script>
 	</head>
 
 	<!-- Body -->
@@ -25,10 +25,9 @@
 				<ul>
 					<li id="searchNav"><a href="search.html"><img class="icons" src="img/icons/search.png"/></a></li>
 					<li><a href="index.html"><img class="icons" src="img/icons/home.png"/></a></li>
-					<li><a href="myAccount.html"><img class="icons" src="img/icons/account.png"/></a></li>
-					<li><a href="viewCart.html"><img class="icons" src="img/icons/cart.png"/></a></li>
+					<li><a href="viewCart.html"><img class="icons" src="img/icons/cart.png"/></a><label id="cartCount">0</label></li>
 					<li><a href="help.html"><img class="icons" src="img/icons/help.png"/></a></li>
-					<li><a href="aboutUs.html">About Us</a></li>
+					<li><a href="myAccount.html"><img class="icons" src="img/icons/account.png"/></a><label id="loginText">Login</label></li>
 				</ul>
 			</nav>
 		</header>
@@ -54,16 +53,17 @@
 				<div id="TotalCostContent">
 					<h2>Total Cost</h2>
 					<p id="totalCost">$0</p>
-					<button class="checkOutBtn">Checkout</button>
+					<button id="btnCheckout" class="checkOutBtn" onclick="checkout();">Checkout</button>
 				</div>
 			</div>
 		</div>
 
         <!-- Footer -->
 		<footer>
-			This website was developed by:<br />
-			Blayde Dietsch (33958764) - Email:<a href="mailto:blaydedietsch@outlook.com">blaydedietsch@outlook.com</a><br />
-			Kyle Trijo (33954876) - Email:<a href="mailto:kyle.trijo@gmail.com">kyle.trijo@gmail.com</a>
+			<a href="aboutUs.html">About Us</a><br/>
+			This website was developed by:<br/>
+			Blayde Dietsch (33958764) - Email: <a href="mailto:blaydedietsch@outlook.com">blaydedietsch@outlook.com</a><br />
+			Kyle Trijo (33954876) - Email: <a href="mailto:kyle.trijo@gmail.com">kyle.trijo@gmail.com</a>
 		</footer>
 	</body>
 </html>

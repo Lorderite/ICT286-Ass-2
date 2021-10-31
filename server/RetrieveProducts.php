@@ -11,8 +11,8 @@
 		$result = mysqli_query($conn, $sql);
 
 		//Make sure result isnt false
-		if(!$result) {
-			echo "No data in table";
+		if(mysqli_num_rows($result) == 0) {
+			echo "No results Found";
 			exit();
 		}
 
